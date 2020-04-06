@@ -12,7 +12,7 @@ class CustomCell: UITableViewCell {
     @IBOutlet weak var imageOfFilm: UIImageView!
     @IBOutlet weak var nameOfFilm: UILabel!
     @IBOutlet weak var countryOfFilm: UILabel!
-    @IBOutlet weak var genreOfFilm: UILabel!
+    @IBOutlet weak var ganreOfFilm: UILabel!
+    @IBOutlet weak var yearOfFilm: UILabel!
     
-
 }

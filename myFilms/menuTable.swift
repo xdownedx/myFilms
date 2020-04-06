@@ -9,10 +9,12 @@
 import UIKit
 
 class menuTable: UITableViewController {
-
+    /*
     let FilmNames = [
         "Gentelmen","Klaus","Joker","Ford vs Ferrari","1917",
         "Gisaengchung","Jojo Rabit","Knife Out","Avengers","Togo"]
+    */
+    let cinema = [filmModel(name: "Джентельмены", year: 2019,country:"USA", ganre:"Comedy", image: "Gentelmen")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,27 +25,25 @@ class menuTable: UITableViewController {
 
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return FilmNames.count
+        return cinema.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomCell
 
-        cell.nameOfFilm?.text = FilmNames[indexPath.row]
- 
-
-        cell.imageOfFilm?.image = UIImage(named:FilmNames[indexPath.row])
-        
+        cell.nameOfFilm?.text = cinema[indexPath.row].name
+        cell.yearOfFilm.text = "(\(cinema[indexPath.row].year))"
+        cell.ganreOfFilm?.text = cinema[indexPath.row].ganre
+        cell.imageOfFilm?.image = UIImage(named:cinema[indexPath.row].image)
+        cell.countryOfFilm?.text = cinema[indexPath.row].country
         
         return cell
     }
     
-    //MARK: - Table view delegate
+   
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
-    }
+    
 
 
     /*
@@ -56,5 +56,7 @@ class menuTable: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    @IBAction func cancelButton(_ segue: UIStoryboardSegue) {
+        
+    }
 }
