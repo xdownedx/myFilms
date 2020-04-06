@@ -284,6 +284,9 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="thg-K3-bdz"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="imageOfPicking" destination="OHK-b8-q8X" id="WbI-Su-YrQ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OeF-m7-59V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="rvg-CR-izX" userLabel="Exit" sceneMemberID="exit"/>
