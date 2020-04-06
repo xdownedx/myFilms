@@ -13,6 +13,7 @@
 		7283497A243B399F00EF50ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72834979243B399F00EF50ED /* Assets.xcassets */; };
 		7283497D243B399F00EF50ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7283497B243B399F00EF50ED /* LaunchScreen.storyboard */; };
 		72834985243B3A2D00EF50ED /* menuTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72834984243B3A2D00EF50ED /* menuTable.swift */; };
+		72834987243B75A100EF50ED /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72834986243B75A100EF50ED /* CustomCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		7283497C243B399F00EF50ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7283497E243B399F00EF50ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		72834984243B3A2D00EF50ED /* menuTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuTable.swift; sourceTree = "<group>"; };
+		72834986243B75A100EF50ED /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				72834970243B399700EF50ED /* AppDelegate.swift */,
 				72834972243B399700EF50ED /* SceneDelegate.swift */,
 				72834984243B3A2D00EF50ED /* menuTable.swift */,
+				72834986243B75A100EF50ED /* CustomCell.swift */,
 				72834976243B399700EF50ED /* Main.storyboard */,
 				72834979243B399F00EF50ED /* Assets.xcassets */,
 				7283497B243B399F00EF50ED /* LaunchScreen.storyboard */,
@@ -140,6 +143,7 @@
 			files = (
 				72834971243B399700EF50ED /* AppDelegate.swift in Sources */,
 				72834973243B399700EF50ED /* SceneDelegate.swift in Sources */,
+				72834987243B75A100EF50ED /* CustomCell.swift in Sources */,
 				72834985243B3A2D00EF50ED /* menuTable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

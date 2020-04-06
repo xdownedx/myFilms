@@ -28,10 +28,12 @@ class menuTable: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomCell
 
-        cell.textLabel?.text = FilmNames[indexPath.row]
-        cell.imageView?.image = UIImage(named:FilmNames[indexPath.row])
+        cell.nameOfFilm?.text = FilmNames[indexPath.row]
+ 
+
+        cell.imageOfFilm?.image = UIImage(named:FilmNames[indexPath.row])
         
         
         return cell
@@ -40,7 +42,7 @@ class menuTable: UITableViewController {
     //MARK: - Table view delegate
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 100
     }
 
 
