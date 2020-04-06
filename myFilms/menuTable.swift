@@ -33,7 +33,14 @@ class menuTable: UITableViewController {
         cell.textLabel?.text = FilmNames[indexPath.row]
         cell.imageView?.image = UIImage(named:FilmNames[indexPath.row])
         
+        
         return cell
+    }
+    
+    //MARK: - Table view delegate
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
     }
 
 
