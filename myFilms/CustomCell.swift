@@ -14,5 +14,7 @@ class CustomCell: UITableViewCell {
     @IBOutlet weak var countryOfFilm: UILabel!
     @IBOutlet weak var ganreOfFilm: UILabel!
     @IBOutlet weak var yearOfFilm: UILabel!
+ 
+ 
     
 }

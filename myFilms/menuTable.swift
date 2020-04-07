@@ -9,12 +9,8 @@
 import UIKit
 
 class menuTable: UITableViewController {
-    /*
-    let FilmNames = [
-        "Gentelmen","Klaus","Joker","Ford vs Ferrari","1917",
-        "Gisaengchung","Jojo Rabit","Knife Out","Avengers","Togo"]
-    */
-    let cinema = [filmModel(name: "Джентельмены", year: 2019,country:"USA", ganre:"Comedy", image: "Gentelmen")]
+    
+    var cinema = filmModel.getFilm()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,16 +23,21 @@ class menuTable: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cinema.count
     }
-
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomCell
+        
+        let films = cinema[indexPath.row]
 
-        cell.nameOfFilm?.text = cinema[indexPath.row].name
-        cell.yearOfFilm.text = "(\(cinema[indexPath.row].year))"
-        cell.ganreOfFilm?.text = cinema[indexPath.row].ganre
-        cell.imageOfFilm?.image = UIImage(named:cinema[indexPath.row].image)
-        cell.countryOfFilm?.text = cinema[indexPath.row].country
+        cell.nameOfFilm?.text = films.name
+        cell.yearOfFilm.text = "(\(films.year))"
+        cell.ganreOfFilm?.text = films.ganre
+        cell.countryOfFilm?.text = films.country
+        
+        if films.newImage == nil {
+                   cell.imageOfFilm.image = UIImage(named: films.image!)
+               } else {
+                   cell.imageOfFilm.image = films.newImage
+               }
         
         return cell
     }
@@ -59,4 +60,14 @@ class menuTable: UITableViewController {
     @IBAction func cancelButton(_ segue: UIStoryboardSegue) {
         
     }
+    @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {
+           
+           guard let newFilmVC = segue.source as? NewCinemaTable else { return }
+           
+           newFilmVC.saveNewFilm()
+        
+           cinema.append(newFilmVC.newCinema!)
+           tableView.reloadData()
+       }
+    
 }
