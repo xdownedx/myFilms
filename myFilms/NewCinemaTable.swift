@@ -10,7 +10,10 @@ import UIKit
 
 class NewCinemaTable: UITableViewController {
     
-    var newCinema: filmModel?
+    
+    
+    var currentCinema:filmModel?
+    
     var imageIsChanged=false
     
     @IBOutlet weak var imageOfPicking: UIImageView!
@@ -19,15 +22,19 @@ class NewCinemaTable: UITableViewController {
     @IBOutlet weak var ganreTextField: UITextField!
     @IBOutlet weak var countryTextField: UITextField!
     
+    @IBOutlet weak var cancelOutlet: UIBarButtonItem!
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
         tableView.tableFooterView = UIView()
         imageIsChanged = false
         saveButton.isEnabled = false
+        setupEditScreen()
+
         nameTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
     }
     
@@ -40,20 +47,11 @@ class NewCinemaTable: UITableViewController {
             
             let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             
-            let camera = UIAlertAction(title: "Camera", style: .default) { _ in
-                self.choseImagePicker(source: .camera)
-            }
-            
-            
-            
             let photo = UIAlertAction(title: "Photo", style: .default) { _ in
                 self.choseImagePicker(source: .photoLibrary)
             }
             
-            let cancel = UIAlertAction(title: "Cancel", style: .cancel)
-            actionSheet.addAction(camera)
             actionSheet.addAction(photo)
-            actionSheet.addAction(cancel)
             
             present(actionSheet, animated: true )
         }else{
@@ -70,11 +68,37 @@ class NewCinemaTable: UITableViewController {
             newImage = #imageLiteral(resourceName: "addPhoto")
         }
         
-        newCinema = filmModel(name: nameTextField.text!, year: Int(yearTextField.text!)!,
-                              country:countryTextField.text, ganre:ganreTextField.text, image: nil, newImage: newImage)
-        
+        let imageData=newImage?.pngData()
+         
+        let newCinema = filmModel(name: nameTextField.text!, year: yearTextField.text!, country: countryTextField.text, ganre: ganreTextField.text, imageData: imageData)
+        storageManager.saveObject(newCinema)
         
     }
+    
+    private func setupEditScreen(){
+        
+        if currentCinema != nil {
+            guard let data = currentCinema?.imageData, let image = UIImage(data: data) else {return}
+            imageOfPicking.image = image
+            imageOfPicking.contentMode = .scaleAspectFill
+            setupNavigationBar()
+            nameTextField.text = currentCinema?.name
+            yearTextField.text = currentCinema?.year
+            ganreTextField.text = currentCinema?.ganre
+            countryTextField.text = currentCinema?.country
+        }
+    }
+    
+    private func setupNavigationBar(){
+        if let topItem = navigationController?.navigationBar.topItem {
+            topItem.backBarButtonItem = UIBarButtonItem(title: "Назад", style: .plain, target: nil, action: nil)
+        }
+        navigationItem.leftBarButtonItem = nil
+        title = currentCinema?.name
+        saveButton.isEnabled = true
+        
+    }
+  
     
     @IBAction func cancelAction(_ sender: Any) {
         dismiss(animated: true)

@@ -6,30 +6,22 @@
 //  Copyright © 2020 Максим Лисицкий. All rights reserved.
 //
 
-import UIKit
+import RealmSwift
 
-struct filmModel {
-    var name: String
-    var year: Int
-    var country: String?
-    var ganre: String?
-    var image: String?
-    var newImage: UIImage?
+class  filmModel:Object {
+    @objc dynamic var name = ""
+    @objc dynamic var year = ""
+    @objc dynamic var country: String?
+    @objc dynamic var ganre: String?
+    @objc dynamic  var imageData: Data?
     
-    static let cinemaName = [
-         "Gentelmen","Klaus","Joker","Ford vs Ferrari","1917",
-         "Gisaengchung","Jojo Rabit","Knife Out","Avengers","Togo"
-     ]
-     
-     static func getFilm() -> [filmModel] {
-         
-         var cinema = [filmModel]()
-         
-         for films in cinemaName {
-             cinema.append(filmModel(name: films, year: 2019,country:"USA", ganre:"Comedy", image: films,newImage: nil))
-         }
-         
-         return cinema
+    convenience init(name:String,year:String,country:String?,ganre:String?,imageData:Data?){
+        self.init()
+        self.name = name
+        self.year = year
+        self.country = country
+        self.ganre = ganre
+        self.imageData = imageData
     }
-     
+    
 }
